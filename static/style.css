@@ -1,0 +1,282 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h2 {
+    text-align: center;
+    margin: 10px
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: radial-gradient(circle at top, #111 0%, #0a0a0f 60%);
+    color: #e5e5e5;
+    min-height: 100vh;
+}
+
+/* ===== HEADER ===== */
+
+header {
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #222;
+    background: #0d0d15;
+}
+
+.logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #8b5cf6;
+    text-shadow: 0 0 8px #8b5cf6;
+}
+
+/* ===== BUTTONS ===== */
+
+button {
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.auth-panel{
+    margin-bottom: 20px;
+    margin-right: 50px
+}
+
+.admin-btn, .user-info {
+    text-align: center;
+}
+
+.add-form{
+    margin-top: 30px;
+    padding: 15px;
+    border: 1px solid rgba(114, 48, 228, 0.25);
+    border-radius: 8px;
+}
+
+.btn-primary {
+    background: #7c3aed;
+    color: white;
+    box-shadow: 0 0 10px #7c3aed;
+}
+
+.btn-primary:hover {
+    background: #a855f7;
+    box-shadow: 0 0 18px #a855f7;
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background: #dc2626;
+    box-shadow: 0 0 10px #dc2626;
+}
+
+.btn-danger:hover {
+    box-shadow: 0 0 18px #ef4444;
+}
+
+.p{
+    margin-bottom: 10px;
+}
+
+/* ===== CONTAINER ===== */
+
+.container, .computers-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: calc(100vh - 80px);
+    padding: 40px 20px;
+}
+
+/* ===== CLUBS WRAPPER (центральная панель) ===== */
+
+.clubs-wrapper {
+    width: 100%;
+    max-width: 750px;
+    background: rgba(20, 20, 33, 0.9);
+    padding: 40px;
+    border-radius: 25px;
+    border: 1px solid #222;
+    box-shadow: 0 0 40px rgba(124, 58, 237, 0.25);
+    backdrop-filter: blur(10px);
+}
+
+/* ===== CLUB CARD ===== */
+
+.club{
+    margin-bottom: 10px;
+    text-align: center;
+    width: 100%;
+    max-width: 750px;
+    background: rgba(18, 60, 53, 0.5);
+    padding: 40px;
+    border-radius: 25px;
+    border: 1px solid #222;
+    box-shadow: 0 0 40px rgba(24, 238, 45, 0.25);
+    backdrop-filter: blur(10px);
+}
+
+.club-card {
+    background: #0f0f1a;
+    padding: 20px;
+    border-radius: 18px;
+    margin-bottom: 20px;
+    border: 1px solid #222;
+    transition: 0.3s;
+}
+
+.club-card:hover {
+    border: 1px solid #7c3aed;
+    box-shadow: 0 0 20px rgba(124,58,237,0.4);
+    transform: translateY(-4px);
+}
+
+.club-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: #a78bfa;
+}
+
+.club-address {
+    font-size: 14px;
+    opacity: 0.6;
+    margin-bottom: 15px;
+}
+
+/* ===== COMPUTER GRID ===== */
+
+.computer {
+    margin: 10px 0;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    color: black;
+    text-align: left
+}
+
+.computers {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+.computer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #141428;
+    padding: 15px 20px;
+    border-radius: 15px;
+    margin-bottom: 12px;
+    border: 1px solid #222;
+    transition: 0.3s;
+}
+
+.computer-row:hover {
+    border: 1px solid #7c3aed;
+    box-shadow: 0 0 15px rgba(124,58,237,0.4);
+}
+
+/* Левая часть */
+.computer-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Правая часть */
+.computer-right {
+    display: flex;
+    align-items: center;
+}
+
+.computer-card {
+    background: #0f0f1a;
+    padding: 20px;
+    border-radius: 14px;
+    text-align: center;
+    border: 1px solid #222;
+    transition: 0.3s;
+}
+
+.computer-card:hover {
+    transform: scale(1.05);
+    border: 1px solid #7c3aed;
+    box-shadow: 0 0 20px rgba(124,58,237,0.4);
+}
+
+/* ===== STATUS ===== */
+
+.status {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.free {
+    background: #16a34a;
+    box-shadow: 0 0 12px #16a34a;
+}
+
+.busy {
+    background: #b91c1c;
+    box-shadow: 0 0 12px #b91c1c;
+}
+
+/* ===== ADMIN CARD ===== */
+
+.admin-card {
+    background: #141421;
+    padding: 20px;
+    border-radius: 14px;
+    margin-bottom: 15px;
+    border: 1px solid #222;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.admin-card:hover {
+    border: 1px solid #7c3aed;
+    box-shadow: 0 0 20px rgba(124,58,237,0.4);
+}
+
+.input-model {
+    width: 300px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background: #0f0f1a;
+    color: white;
+    outline: none;
+}
+
+input {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background: #0f0f1a;
+    color: white;
+    outline: none;
+}
+
+input:focus {
+    border: 1px solid #7c3aed;
+    box-shadow: 0 0 10px #7c3aed;
+}

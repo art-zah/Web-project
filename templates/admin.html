@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+    <meta charset="UTF-8">
+    <title>Админ панель</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .computer {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 10px;
+            background: #f9f9f9;
+        }
+
+        .busy {
+            background: #ffe0e0;
+        }
+
+        .free {
+            background: #e0ffe0;
+        }
+
+        button {
+            margin-right: 10px;
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <button onclick="goBack()">← Назад</button>
+    
+    <h1>Админ панель клуба</h1>
+</header>
+
+<h2>Компьютеры клуба</h2>
+
+<div class="add-form">
+    <h3>Добавить новый компьютер</h3>
+    <input type="text" class="input-model" id="new-model" placeholder="Название модели(максимум 50 символов)">
+    <button onclick="addComputer()">Добавить</button>
+</div>
+
+<div class="computers-container" id="computers-container">
+    <div class="clubs-wrapper">
+        {% for comp in computers %}
+            <div class="computer {{ comp[3] }}">
+                <strong>ID:</strong> {{ comp[0] }} <br>
+                <strong>Модель:</strong> {{ comp[2] }} <br>
+                <strong>Статус:</strong> 
+                <span id="status-{{ comp[0] }}">
+                    {{ "Свободен" if comp[3] == "free" else "Занят" }}
+                </span>
+                <br><br>
+
+                <button 
+                    data-id="{{ comp[0] }}" 
+                    onclick="updateStatus(this.dataset.id, 'free')">
+                    Сделать свободным
+                </button>
+
+                <button 
+                    data-id="{{ comp[0] }}" 
+                    onclick="updateStatus(this.dataset.id, 'busy')">
+                    Сделать занятым
+                </button>
+
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+
+function goBack() {
+    window.location.href = "/";
+}
+
+async function updateStatus(computerId, newStatus) {
+
+    const response = await fetch("/api/admin/update_status", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            computer_id: computerId,
+            status: newStatus
+        })
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+        document.getElementById("status-" + computerId).textContent =
+            newStatus === "free" ? "Свободен" : "Занят";
+
+        const computerDiv =
+            document.getElementById("status-" + computerId).closest(".computer");
+
+        // Удаляем старые классы
+        computerDiv.classList.remove("free", "busy");
+
+        // Добавляем новый класс
+        computerDiv.classList.add(newStatus);
+
+        alert("Статус обновлён"); 
+    } else {
+        alert(result.error);
+    }
+}
+
+async function addComputer() {
+
+    const model = document.getElementById("new-model").value;
+
+    if (!model) {
+        alert("Введите модель компьютера");
+        return;
+    }
+
+    const response = await fetch("/api/admin/add_computer", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ model })
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+        alert("Компьютер добавлен");
+        location.reload();
+    } else {
+        alert(result.error);
+    }
+}
+
+</script>
+
+</body>
+</html>

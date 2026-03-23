@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+    <meta charset="UTF-8">
+    <title>Бронирование кибер‑клубов</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        button { margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Бронирование мест в кибер‑клубах</h1>
+
+        <div class="auth-panel" id="auth-panel">
+            <h3>Авторизация</h3>
+            <div id="login-form">
+                <input type="email" id="login-email" placeholder="Nickname" required>
+                <input type="password" id="login-password" placeholder="Пароль" required>
+                <button onclick="login()">Войти</button>
+                <button onclick="showRegisterForm()">Зарегистрироваться</button>
+            </div>
+
+            <div id="register-form" style="display: none;">
+                <input type="email" id="register-email" placeholder="Nickname" required>
+                <input type="password" id="register-password" placeholder="Пароль" required>
+                <button onclick="register()">Зарегистрироваться</button>
+                <button onclick="showLoginForm()">Назад к входу</button>
+            </div>
+
+            <div class="user-info" id="user-info" style="display: none;">
+                <p>Вы вошли как <span id="user-email"></span></p>
+                <button onclick="logout()">Выйти</button>
+            </div>
+
+        </div>
+        <div class="admin-btn" id="admin-btn" style="display: none;">
+                <p>Вы являетесь администратором компьютерного клуба</p>
+                <button onclick="goToAdmin()">Админ панель</button>
+        </div>
+    </header>
+    <div class="container" >
+        <div class="clubs-wrapper">
+            <div id="clubs-container" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script src="../static/script.js">
+    </script>
+</body>
+</html>
